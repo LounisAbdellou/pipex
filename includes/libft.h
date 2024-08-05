@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 13:28:39 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/25 16:16:01 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:16:28 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -24,7 +26,10 @@ typedef struct s_list
 }	t_list;
 
 size_t		ft_nbrlen(int nbr);
+size_t		ft_hexlen(unsigned int hex);
+size_t		ft_tablen(char **tab);
 size_t		ft_strlen(const char *str);
+size_t		get_line_count(int fd);
 size_t		ft_strlcpy(char *dest, char *src, size_t n);
 size_t		ft_strlcat(char *dest, char *src, size_t n);
 long long	ft_atoll(char *str);
@@ -42,9 +47,13 @@ int			ft_tolower(int c);
 int			ft_toupper(int c);
 int			ft_atoi(const char *str);
 int			ft_strcmp(char *s1, char *s2);
+int			ft_printf(const char *format, ...);
 int			ft_strncmp(char *s1, char *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
+int			ft_count_occ(char *str, char c);
+int			ft_countt_occ(char **tab, char c);
 char		*ft_itoa(int n);
+char		*get_next_line(int fd);
 char		*ft_strndup(char const *s, size_t n);
 char		*ft_strnstr(char *str, char *needle, size_t n);
 char		*ft_strdup(char *str);
@@ -69,6 +78,8 @@ void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_memset(void *s, int value, size_t n);
+void		ft_puthex_fd(unsigned int hex, int capitilize, int fd);
+void		ft_free_tab(char **tab);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(void *content);
