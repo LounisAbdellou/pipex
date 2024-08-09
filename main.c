@@ -6,11 +6,15 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/07 09:45:21 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/09 09:39:41 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	exec(char *cmd, char **env);
+
+void	open_pipe(char *cmd, char **env);
 
 void	pipex(char **args, int infile, int outfile, char **env)
 {

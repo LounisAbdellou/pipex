@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:03:59 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/11 20:37:57 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/09 09:28:55 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 # define PIPEX_H
 
 # include "libft.h"
+
+int	handle_open(char *filename, int is_infile);
 
 #endif
