@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/13 17:06:32 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:16:44 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ void	exec(char *cmd, char **env)
 	cmd_path = get_path(cmd_tab[0], env);
 	if (execve(cmd_path, cmd_tab, env) == -1)
 	{
-		// ft_putstr_fd("pipex: command not found :", 1);
-		// ft_putendl_fd(cmd_tab[0], 1);
 		print_error();
 		ft_free_tab(cmd_tab);
-		// exit(0);
 	}
 }
 
