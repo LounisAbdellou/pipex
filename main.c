@@ -6,16 +6,27 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/12 17:41:18 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:42:54 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 void	exec(char *cmd, char **env)
-{
-
-}
+// {
+// 	char	**s_cmd;
+// 	char	*path;
+// 
+// 	s_cmd = ft_split(cmd, ' ');
+// 	path = get_path(s_cmd[0], env);
+// 	if (execve(path, s_cmd, env) == -1)
+// 	{
+// 		ft_putstr_fd("pipex: command not found: ", 2);
+// 		ft_putendl_fd(s_cmd[0], 2);
+// 		ft_free_tab(s_cmd);
+// 		exit(0);
+// 	}
+// }
 
 void	open_pipe(char *cmd, char **env);
 {
