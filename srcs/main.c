@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/13 18:50:44 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/13 19:06:47 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int ac, char **av, char **env)
 	int	infile;
 	int	outfile;
 
-	if (ac < 5)
+	if (ac != 5)
 		return (1);
 	infile = handle_open(av[1], 1);
 	outfile = handle_open(av[ac - 1], 0);
