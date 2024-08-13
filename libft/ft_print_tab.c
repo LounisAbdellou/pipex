@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_print_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 18:03:59 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/13 18:47:53 by labdello         ###   ########.fr       */
+/*   Created: 2024/08/13 18:11:36 by labdello          #+#    #+#             */
+/*   Updated: 2024/08/13 18:45:00 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdio.h>
-# include <sys/wait.h>
+void	ft_print_tab(char **tab)
+{
+	int	i;
 
-char	*get_path(char *cmd, char **env);
-char	*get_env(char **env);
-int		handle_open(char *filename, int is_infile);
-
-#endif
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		ft_printf("tab[%d] => %s\n", i, tab[i]);
+		i++;
+	}
+}
