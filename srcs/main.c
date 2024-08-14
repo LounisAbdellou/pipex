@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/14 14:57:00 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:28:40 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	exec(char *cmd, char **env)
 	}
 }
 
-void	open_pipe(char *cmd, char **env)
+void	open_pipe(char *cmd, char **env, int outfile)
 {
 	int	pid;
 	int	pipe_fd[2];
@@ -41,14 +41,20 @@ void	open_pipe(char *cmd, char **env)
 	if (pid == 0)
 	{
 		close(pipe_fd[0]);
-		dup2(pipe_fd[1], 1);
+		if (outfile == -1)
+			dup2(pipe_fd[1], 1);
+		else
+			dup2(outfile, 1);
 		exec(cmd, env);
 	}
 	else
 	{
 		close(pipe_fd[1]);
 		dup2(pipe_fd[0], 0);
+		waitpid(pid, NULL, 0);
 	}
+	close(pipe_fd[1]);
+	close(pipe_fd[0]);
 }
 
 void	pipex(char **args, int infile, int outfile, char **env)
@@ -59,11 +65,10 @@ void	pipex(char **args, int infile, int outfile, char **env)
 	dup2(infile, 0);
 	while (args[i + 2] != NULL)
 	{
-		open_pipe(args[i], env);
+		open_pipe(args[i], env, -1);
 		i++;
 	}
-	dup2(outfile, 1);
-	exec(args[i], env);
+	open_pipe(args[i], env, outfile);
 }
 
 int	main(int ac, char **av, char **env)
