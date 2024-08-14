@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:03:59 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/13 18:47:53 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:57:46 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <sys/wait.h>
 
+void	print_error(void);
 char	*get_path(char *cmd, char **env);
 char	*get_env(char **env);
 int		handle_open(char *filename, int is_infile);

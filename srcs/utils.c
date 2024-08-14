@@ -6,11 +6,22 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 09:45:38 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/13 18:50:17 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:57:20 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	print_error(void)
+{
+	static int	has_error;
+
+	if (has_error != 1)
+	{
+		perror("pipex");
+		has_error = 1;
+	}
+}
 
 int	handle_open(char *filename, int is_infile)
 {

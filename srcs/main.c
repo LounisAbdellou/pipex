@@ -6,22 +6,11 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/13 19:06:47 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:57:00 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	print_error(void)
-{
-	static int	has_error;
-
-	if (has_error != 1)
-	{
-		perror("pipex");
-		has_error = 1;
-	}
-}
 
 void	exec(char *cmd, char **env)
 {
