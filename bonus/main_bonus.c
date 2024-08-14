@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 19:00:49 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/14 16:27:57 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:30:39 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	open_pipe(char *cmd, char **env, int outfile)
 	{
 		close(pipe_fd[1]);
 		dup2(pipe_fd[0], 0);
-		waitpid(pid, NULL, 0);
+		// waitpid(pid, NULL, 0);
 	}
 	close(pipe_fd[1]);
 	close(pipe_fd[0]);
@@ -60,8 +60,10 @@ void	open_pipe(char *cmd, char **env, int outfile)
 void	pipex(char **args, int infile, int outfile, char **env)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	dup2(infile, 0);
 	while (args[i + 2] != NULL)
 	{
@@ -69,6 +71,11 @@ void	pipex(char **args, int infile, int outfile, char **env)
 		i++;
 	}
 	open_pipe(args[i], env, outfile);
+	while (j <= i)
+	{
+		wait(NULL);
+		j++;
+	}
 }
 
 int	main(int ac, char **av, char **env)
