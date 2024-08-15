@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 19:05:57 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/14 17:56:22 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:05:02 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ int	handle_open(char *filename, int is_infile)
 		fd = open(filename, O_RDONLY, 0777);
 	else
 		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd < 3)
-	{
+	if (fd == -1)
 		print_error();
-		exit(0);
-	}
 	return (fd);
 }
 
