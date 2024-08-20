@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:01:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/15 18:37:08 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:21:40 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	exec(char *cmd, char **env)
 	cmd_path = get_path(cmd_tab[0], env);
 	if (execve(cmd_path, cmd_tab, env) == -1)
 	{
-		print_error();
+		perror("pipex");
 		ft_free_tab(cmd_tab);
+		exit(0);
 	}
 }
 
@@ -45,8 +46,9 @@ void	open_pipe(char *cmd, char **env, int outfile)
 			dup2(pipe_fd[1], 1);
 		else
 			dup2(outfile, 1);
-		exec(cmd, env);
 		close(pipe_fd[1]);
+		close(outfile);
+		exec(cmd, env);
 	}
 	else
 	{
@@ -65,12 +67,14 @@ void	pipex(char **args, int infile, int outfile, char **env)
 	j = 0;
 	if (infile != -1)
 		dup2(infile, 0);
+	close(infile);
 	while (args[i + 2] != NULL)
 	{
 		open_pipe(args[i], env, -1);
 		i++;
 	}
 	open_pipe(args[i], env, outfile);
+	close(outfile);
 	while (j <= i)
 	{
 		wait(NULL);
